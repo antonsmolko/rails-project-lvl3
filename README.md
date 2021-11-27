@@ -2,4 +2,4 @@
 [![Actions Status](https://github.com/antonsmolko/rails-project-lvl3/workflows/hexlet-check/badge.svg)](https://github.com/antonsmolko/rails-project-lvl3/actions)
 [![CI](https://github.com/antonsmolko/rails-project-lvl3/actions/workflows/ci.yml/badge.svg)](https://github.com/antonsmolko/rails-project-lvl3/actions/workflows/ci.yml)
 
-[Demo](https://hexlet-call-board-lvl3.herokuapp.com)
+[Demo](https://hexlet-bulletin-board-lvl3.herokuapp.com)
