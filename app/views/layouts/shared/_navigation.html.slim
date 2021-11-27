@@ -1,0 +1,21 @@
+nav.navbar.navbar-dark.bg-dark.navbar-static-top.navbar-expand-md
+  .container
+    button.navbar-toggler.collapsed[type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"]
+      span.sr-only Toggle navigation
+    = link_to root_path, class: 'navbar-brand' do
+      | Bulletin Board
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      / ul.nav.navbar-nav.me-auto
+      /   li.nav-item
+      /     = link_to t('.posts'), root_path, class: 'nav-link'
+      / ul.nav.navbar-nav.ms-auto
+      /   - if user_signed_in?
+      /     li.nav-item
+      /       = link_to t('.create_post'), new_post_path, class: 'nav-link'
+      /     li.nav-item
+      /       = link_to t('actions.sign_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
+      /   - else
+      /     li.nav-item
+      /       = link_to t('actions.sign_in'), new_user_session_path, class: 'nav-link'
+      /     li.nav-item
+      /       = link_to t('actions.sign_up'), new_user_registration_path, class: 'nav-link'
