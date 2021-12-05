@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'simple_form'
+
 gem 'slim-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -63,6 +65,14 @@ group :production do
   gem 'pg'
 end
 
+gem 'aasm'
+gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'devise-i18n'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
+gem 'rails-i18n'
 gem 'rollbar'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
