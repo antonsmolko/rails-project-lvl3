@@ -1,0 +1,2 @@
+module Web::OmniauthCallbacksHelper
+end

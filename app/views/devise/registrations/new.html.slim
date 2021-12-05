@@ -1,0 +1,19 @@
+.d-flex.flex-column
+  h2= t('.title')
+  hr.mb-5
+  .row.justify-content-center
+    .col-8
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .row.form-inputs.g-4.justify-content-center
+          .col-md-7
+            = f.input :email, autofocus: true, input_html: { autocomplete: 'email' }
+          .col-md-7
+            = f.input :password, input_html: { autocomplete: 'new-password' }
+          .col-md-7
+            = f.input :password_confirmation, input_html: { autocomplete: 'new-password' }
+          .col-md-7
+            .d-grid.mt-3
+              = f.button :submit, t('.sign_up'), class: 'btn-warning'
+    .col-8
+      = render "devise/shared/links"
