@@ -1,0 +1,10 @@
+h1= @bulletin.name
+hr.mb-5
+
+.row
+  .col-md-6
+    = image_tag @bulletin.image, class: 'img-thumbnail mb-4'
+    p= @bulletin.description
+  .col-md-6
+    .card.card-body
+      = @bulletin.creator.full_name

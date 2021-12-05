@@ -66,9 +66,11 @@ group :production do
 end
 
 gem 'aasm'
+gem 'active_storage_validations'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise-i18n'
+gem 'image_processing'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'

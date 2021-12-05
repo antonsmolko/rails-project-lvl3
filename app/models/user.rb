@@ -10,6 +10,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: %i[github]
 
+  has_many :bulletin
+
   def self.from_omniauth(auth)
     exist_user = User.find_by(email: auth.info.email)
 
@@ -32,5 +34,9 @@ class User < ApplicationRecord
 
   def can_send_email?
     !email_disabled_delivery && !unconfirmed_email
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

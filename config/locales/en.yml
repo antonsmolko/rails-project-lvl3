@@ -34,7 +34,17 @@ en:
     shared:
       navigation:
         logo: Bulletin Board
+        bulletins: Bulletins
+        add_bulletin: Add Bulletin
   actions:
+    cancel: Cancel
+    save: Save
     sign_in: Sign In
     sign_up: Sign Up
     sign_out: Sign Out
+  web:
+    home:
+      index:
+        title: Bulletins
+      new:
+        title: Add bulletin

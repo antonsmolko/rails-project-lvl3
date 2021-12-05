@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Personal Items
+
+two:
+  title: Transport
+
+three:
+  title: Work
+
+four:
+  title: For home
+
+five:
+  title: Property
+
+six:
+  title: Hobby
+
+seven:
+  title: Electronics
+
+eight:
+  title: Animals
+
+nine:
+  title: Some
