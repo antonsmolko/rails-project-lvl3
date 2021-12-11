@@ -74,6 +74,7 @@ gem 'image_processing'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'pundit'
 gem 'rails-i18n'
 gem 'rollbar'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -10,7 +10,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: %i[github]
 
-  has_many :bulletin
+  has_many :bulletins
+
+  ADMIN_ROLE = 'admin'
 
   def self.from_omniauth(auth)
     exist_user = User.find_by(email: auth.info.email)
@@ -30,6 +32,10 @@ class User < ApplicationRecord
         user.skip_confirmation!
       end
     end
+  end
+
+  def admin?
+    role == ADMIN_ROLE
   end
 
   def can_send_email?

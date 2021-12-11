@@ -13,5 +13,12 @@ Rails.application.routes.draw do
     end
 
     resources :bulletins, except: :index
+
+    namespace 'admin', as: 'admin' do
+      root 'bulletins#index'
+      resources :bulletins, only: %i[index edit delete show]
+      resources :categories, only: %i[index edit delete show]
+      resources :users, only: %i[index edit delete show]
+    end
   end
 end

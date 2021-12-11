@@ -13,6 +13,6 @@ html
       = render 'layouts/shared/navigation'
     = render 'layouts/shared/flash'
     main.my-5[role="main"]
-      .container-fluid
+      .container
         .card.p-5.card-body.border-0.shadow
           = content_for?(:content) ? yield(:content) : yield

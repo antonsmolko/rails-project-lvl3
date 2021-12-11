@@ -42,9 +42,12 @@ en:
     sign_in: Sign In
     sign_up: Sign Up
     sign_out: Sign Out
+    edit: Edit
+    delete: Delete
   web:
     home:
       index:
         title: Bulletins
       new:
         title: Add bulletin
+  forbidden: Access is denied

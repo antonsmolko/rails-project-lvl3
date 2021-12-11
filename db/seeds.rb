@@ -16,7 +16,22 @@ end
 
 
 if User.count.zero?
-  User.create(email: 'asmolko@yandex.ru', password: 'nnnnnnn')
+  admin = User.create(
+    email: 'asmolko@yandex.ru',
+    password: 'nnnnnn',
+    role: User::ADMIN_ROLE
+  )
+  admin.confirmed_at = Time.now
+  admin.save!
+
+  user = User.create(
+    email: 'sarahconor@gmail.com',
+    first_name: 'Sarah',
+    last_name: 'Conor',
+    password: 'nnnnnn'
+  )
+  user.confirmed_at = Time.now
+  user.save!
 end
 
 user = User.first

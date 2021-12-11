@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_many :bulletin
+  has_many :bulletins
 end

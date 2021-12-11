@@ -1,0 +1,25 @@
+.row
+  .col-md-3.col-lg-2
+    ul.nav.flex-column.nav-pills.text-center.text-md-start.me-3
+      li.nav-item
+        = link_to 'Bulletins', admin_bulletins_path, class: 'nav-link active'
+      li.nav-item
+        = link_to 'Categories', admin_categories_path, class: 'nav-link'
+      li.nav-item
+        = link_to 'Users', admin_users_path, class: 'nav-link'
+  .col-md-9.col-lg-10
+    h1 Bulletins
+    table.table
+      thead
+        tr
+          th(scope="col") ID
+          th(scope="col") Name
+          th.text-end(scope="col") Actions
+      tbody
+        - @bulletins.each do |bulletin|
+          tr
+            th(scope="row")= bulletin.id
+            td= bulletin.name
+            td.d-flex.gap-1.justify-content-end
+              = link_to t('actions.edit'), edit_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-primary'
+              = link_to t('actions.delete'), admin_bulletin_path(bulletin), method: :delete, class: 'btn btn-sm btn-danger'
