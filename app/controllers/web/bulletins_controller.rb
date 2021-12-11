@@ -14,7 +14,7 @@ class Web::BulletinsController < ApplicationController
     @bulletin = Bulletin.create(bulletin_params.merge(creator_id: current_user.id))
 
     if @bulletin.save!
-      redirect_to root_path, notice: 'Bulletin was successfully created.'
+      redirect_to profile_root_path, notice: 'Bulletin was successfully created.'
     else
       render :new
     end
@@ -26,10 +26,20 @@ class Web::BulletinsController < ApplicationController
 
   def update
     if resource.update!(bulletin_params)
-      redirect_to root_path, notice: 'Bulletin was successfully updated.'
+      redirect_to profile_root_path, notice: 'Bulletin was successfully updated.'
     else
       render :new
     end
+  end
+
+  def to_moderate
+    resource.to_moderate!
+    redirect_to profile_root_path
+  end
+
+  def archive
+    resource.archive!
+    redirect_to profile_root_path
   end
 
   private

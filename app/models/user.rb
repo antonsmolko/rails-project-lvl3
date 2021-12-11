@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :bulletins
 
   ADMIN_ROLE = 'admin'
+  DEFAULT_ROLE = 'user'
 
   def self.from_omniauth(auth)
     exist_user = User.find_by(email: auth.info.email)
@@ -36,6 +37,10 @@ class User < ApplicationRecord
 
   def admin?
     role == ADMIN_ROLE
+  end
+
+  def user?
+    role == DEFAULT_ROLE
   end
 
   def can_send_email?

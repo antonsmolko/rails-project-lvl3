@@ -6,19 +6,31 @@ Rails.application.routes.draw do
   scope module: :web do
     root 'home#index'
 
-    resources :users do
+    resources :bulletins, except: %w[index destroy] do
       member do
-        get :profile
+        get :to_moderate
+        get :archive
       end
     end
 
-    resources :bulletins, except: :index
-
     namespace 'admin', as: 'admin' do
       root 'bulletins#index'
-      resources :bulletins, only: %i[index edit delete show]
-      resources :categories, only: %i[index edit delete show]
-      resources :users, only: %i[index edit delete show]
+
+      resources :bulletins, only: %i[index update show] do
+        member do
+          get :approve
+          get :reject
+          get :archive
+        end
+      end
+
+      resources :categories, only: %i[index edit update show]
+
+      resources :users, only: %i[index edit destroy show]
+    end
+
+    namespace 'profile', as: 'profile' do
+      root 'home#index'
     end
   end
 end

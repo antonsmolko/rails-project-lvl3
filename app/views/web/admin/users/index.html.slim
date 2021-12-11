@@ -2,22 +2,22 @@
   .col-md-3.col-lg-2
     ul.nav.flex-column.nav-pills.text-center.text-md-start.me-3
       li.nav-item
-        = link_to 'Bulletins', admin_bulletins_path, class: 'nav-link'
+        = link_to t('web.admin.bulletins.title'), admin_bulletins_path, class: 'nav-link'
       li.nav-item
-        = link_to 'Categories', admin_categories_path, class: 'nav-link'
+        = link_to t('web.admin.categories.title'), admin_categories_path, class: 'nav-link'
       li.nav-item
-        = link_to 'Users', admin_users_path, class: 'nav-link active'
+        = link_to t('web.admin.users.title'), admin_users_path, class: 'nav-link active'
   .col-md-9.col-lg-10
-    h1 Users
+    h1= t('web.admin.users.title')
     table.table
       thead
         tr
-          th(scope="col") ID
-          th(scope="col") Email
-          th(scope="col") First Name
-          th(scope="col") Last Name
-          th(scope="col") Admin
-          th.text-end(scope="col") Actions
+          th(scope="col")= t('common.table.id')
+          th(scope="col")= t('.table.email')
+          th(scope="col")= t('.table.first_name')
+          th(scope="col")= t('.table.last_name')
+          th(scope="col")= t('.table.role')
+          th.text-end(scope="col")= t('common.table.actions')
       tbody
         - @users.each do |user|
           tr
@@ -27,7 +27,8 @@
             td= user.last_name
             td
               - if user.admin?
-                span.badge.rounded-pill.bg-danger Admin
-            td.d-flex.gap-1.justify-content-end
-              = link_to t('actions.edit'), edit_admin_user_path(user), class: 'btn btn-sm btn-primary'
-              = link_to t('actions.delete'), admin_user_path(user), method: :delete, class: 'btn btn-sm btn-danger'
+                span.badge.rounded-pill.bg-danger= t('.table.admin')
+            td
+              .d-flex.gap-1.justify-content-end
+                = link_to t('actions.edit'), edit_admin_user_path(user), class: 'btn btn-sm btn-primary'
+                = link_to t('actions.delete'), admin_user_path(user), method: :delete, class: 'btn btn-sm btn-danger'

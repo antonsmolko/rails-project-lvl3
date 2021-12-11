@@ -15,3 +15,7 @@
  */
 
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
+
+table.table td {
+    min-height: 48px;
+}

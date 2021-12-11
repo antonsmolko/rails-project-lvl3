@@ -42,7 +42,7 @@ if Bulletin.count.zero?
       name: Faker::Movies::VForVendetta.character,
       description: Faker::Lorem.paragraph(sentence_count: 5),
       category_id: Category.all.sample.id,
-      creator_id: user.id
+      user_id: user.id
     )
     filename = "image-#{i + 1}.jpeg"
     filepath = Rails.root.join('test/fixtures/files', filename)

@@ -3,11 +3,12 @@ class CreateBulletins < ActiveRecord::Migration[6.1]
     create_table :bulletins do |t|
       t.string :name
       t.text :description
+      t.string :aasm_state
 
       t.timestamps
 
       t.references :category, index: true, foreign_key: true
-      t.references :creator, index: true, foreign_key: { to_table: :users }
+      t.references :user, index: true, foreign_key: true
     end
   end
 end

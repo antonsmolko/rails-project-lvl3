@@ -2,24 +2,25 @@
   .col-md-3.col-lg-2
     ul.nav.flex-column.nav-pills.text-center.text-md-start.me-3
       li.nav-item
-        = link_to 'Bulletins', admin_bulletins_path, class: 'nav-link'
+        = link_to t('web.admin.bulletins.title'), admin_bulletins_path, class: 'nav-link'
       li.nav-item
-        = link_to 'Categories', admin_categories_path, class: 'nav-link active'
+        = link_to t('web.admin.categories.title'), admin_categories_path, class: 'nav-link active'
       li.nav-item
-        = link_to 'Users', admin_users_path, class: 'nav-link'
+        = link_to t('web.admin.users.title'), admin_users_path, class: 'nav-link'
   .col-md-9.col-lg-10
-    h1 Categories
+    h1= t('web.admin.categories.title')
     table.table
       thead
         tr
-          th(scope="col") ID
-          th(scope="col") Name
-          th.text-end(scope="col") Actions
+          th(scope="col")= t('common.table.id')
+          th(scope="col")= t('common.table.name')
+          th.text-end(scope="col")= t('common.table.actions')
       tbody
         - @categories.each do |category|
           tr
             th(scope="row")= category.id
             td= category.name
-            td.d-flex.gap-1.justify-content-end
-              = link_to t('actions.edit'), edit_admin_category_path(category), class: 'btn btn-sm btn-primary'
-              = link_to t('actions.delete'), admin_category_path(category), method: :delete, class: 'btn btn-sm btn-danger'
+            td
+              .d-flex.gap-1.justify-content-end
+                = link_to t('actions.edit'), edit_admin_category_path(category), class: 'btn btn-sm btn-primary'
+                = link_to t('actions.delete'), admin_category_path(category), method: :delete, class: 'btn btn-sm btn-danger'
