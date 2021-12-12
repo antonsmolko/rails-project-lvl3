@@ -62,7 +62,7 @@ class Web::BulletinsController < ApplicationController
   end
 
   def signed_in_creator?
-    return if resource.user_id == current_user.id
+    return if resource.user.id == current_user.id
 
     redirect_to root_path, notice: t('forbidden')
   end
