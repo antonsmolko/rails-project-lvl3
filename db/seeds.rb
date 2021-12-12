@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -14,17 +15,16 @@ if Category.count.zero?
   categories.each { |category| Category.create(name: category) }
 end
 
-
 if User.count.zero?
-  admin = User.create(
+  super_admin = User.create(
     email: 'superadmin@example.com',
     first_name: 'John',
     last_name: 'Doe',
     password: 'nnnnnn',
     role: User::SUPER_ADMIN_ROLE
   )
-  admin.confirmed_at = Time.now
-  admin.save!
+  super_admin.confirmed_at = Time.zone.now
+  super_admin.save!
 
   user = User.create(
     email: 'sarah@conor.com',
@@ -32,7 +32,7 @@ if User.count.zero?
     last_name: 'Conor',
     password: 'nnnnnn'
   )
-  user.confirmed_at = Time.now
+  user.confirmed_at = Time.zone.now
   user.save!
 end
 

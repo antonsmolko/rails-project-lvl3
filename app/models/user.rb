@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -22,8 +24,8 @@ class User < ApplicationRecord
   DEFAULT_ROLE = 'user'
   ADMIN_ROLE = 'admin'
 
-  ROLES = [DEFAULT_ROLE, ADMIN_ROLE]
-  ADMIN_ROLES = [SUPER_ADMIN_ROLE, ADMIN_ROLE]
+  ROLES = [DEFAULT_ROLE, ADMIN_ROLE].freeze
+  ADMIN_ROLES = [SUPER_ADMIN_ROLE, ADMIN_ROLE].freeze
 
   def self.from_omniauth(auth)
     exist_user = User.find_by(email: auth.info.email)

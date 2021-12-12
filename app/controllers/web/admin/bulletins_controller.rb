@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def index
     @query = Bulletin.where.not(aasm_state: :draft).ransack(params[:q])

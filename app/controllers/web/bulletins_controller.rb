@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web::BulletinsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :signed_in_creator?, only: %i[update to_moderate archive]
@@ -61,6 +63,7 @@ class Web::BulletinsController < ApplicationController
 
   def signed_in_creator?
     return if resource.user_id == current_user.id
+
     redirect_to root_path, notice: t('forbidden')
   end
 end

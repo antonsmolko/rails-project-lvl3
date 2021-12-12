@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DashboardPolicy < Struct.new(:user, :dashboard)
+DashboardPolicy = Struct.new(:user, :dashboard) do
   def show?
     user.admin?
   end
