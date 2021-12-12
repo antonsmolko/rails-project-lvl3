@@ -273,7 +273,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   # config.omniauth :github, '2ee21c9885b883a24b0f', '51f1064078b677ecd0061b87f49493add9159af1', scope: 'user'
-  config.omniauth :github, ENV.GITHUB_APP_ID, ENV.GITHUB_APP_SECRET
+  config.omniauth :github, ENV.fetch('GITHUB_APP_ID', '2ee21c9885b883a24b0f'), ENV.fetch('GITHUB_APP_SECRET', '51f1064078b677ecd0061b87f49493add9159af1')
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
