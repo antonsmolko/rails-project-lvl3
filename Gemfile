@@ -57,13 +57,11 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'faker'
   gem 'webdrivers'
 end
 
 group :production do
   gem 'pg'
-  gem 'faker'
 end
 
 gem 'aasm'
@@ -71,6 +69,7 @@ gem 'active_storage_validations'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise-i18n'
+gem 'faker'
 gem 'image_processing'
 gem 'kaminari'
 gem 'omniauth'
