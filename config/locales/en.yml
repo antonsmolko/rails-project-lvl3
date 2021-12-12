@@ -49,6 +49,7 @@ en:
     reject: Reject
     approve: Approve
     to_moderate: To Moderate
+    reset: Reset
   common:
     table:
       id: ID
@@ -56,6 +57,11 @@ en:
       name: Name
       state: State
       published_at: Published At
+      bulletins: Bulletins
+  roles:
+    user: User
+    admin: Admin
+    super_admin: Super Admin
   web:
     home:
       index:
@@ -64,7 +70,7 @@ en:
       home:
         index:
           title: My bulletins
-          add: Add bulletins
+          add: Add bulletin
     bulletins:
       new:
         title: Add bulletin
@@ -73,6 +79,8 @@ en:
     admin:
       users:
         title: Users
+        edit:
+          title: Edit User
         table:
           email: Email
           first_name: First Name
@@ -83,4 +91,29 @@ en:
         title: Bulletins
       categories:
         title: Categories
+        add: Add Category
+        edit:
+          title: Edit Category
+        new:
+          title: New Category
+    shared:
+      search_form:
+        bulletin_details: Search bulletin name
+        category_details: Choose category
   forbidden: Access is denied
+  notice:
+    users:
+      created: User was successfully created.
+      deleted: User was successfully deleted.
+      updated: User was successfully updated.
+    categories:
+      created: Category was successfully created.
+      deleted: Category was successfully deleted.
+      updated: Category was successfully updated.
+    bulletins:
+      created: Bulletin was successfully created.
+      updated: Bulletin was successfully updated.
+      published: Bulletin was successfully published.
+      rejected: Bulletin was successfully rejected.
+      archived: Bulletin was successfully archived.
+      to_moderation: Bulletin was successfully submitted for moderation.

@@ -10,10 +10,20 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: %i[github]
 
-  has_many :bulletins
+  has_many :bulletins, dependent: :destroy
 
-  ADMIN_ROLE = 'admin'
+  validates :email, uniqueness: true, presence: true
+  validates :password, presence: true
+  validates :password, confirmation: { case_sensitive: true }
+
+  paginates_per 20
+
+  SUPER_ADMIN_ROLE = 'super_admin'
   DEFAULT_ROLE = 'user'
+  ADMIN_ROLE = 'admin'
+
+  ROLES = [DEFAULT_ROLE, ADMIN_ROLE]
+  ADMIN_ROLES = [SUPER_ADMIN_ROLE, ADMIN_ROLE]
 
   def self.from_omniauth(auth)
     exist_user = User.find_by(email: auth.info.email)
@@ -35,8 +45,12 @@ class User < ApplicationRecord
     end
   end
 
+  def super_admin?
+    role == SUPER_ADMIN_ROLE
+  end
+
   def admin?
-    role == ADMIN_ROLE
+    ADMIN_ROLES.include? role
   end
 
   def user?

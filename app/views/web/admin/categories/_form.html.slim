@@ -1,0 +1,6 @@
+= simple_form_for category, url: url do |f|
+  = f.input :name, wrapper_html: { class: 'mb-3' }
+
+  .mt-5
+    = link_to t('actions.cancel'), admin_categories_path, class: 'btn btn-secondary me-1'
+    = f.submit t('actions.save'), class: 'btn btn-primary'

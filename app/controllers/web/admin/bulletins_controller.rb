@@ -1,6 +1,7 @@
 class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def index
-    @bulletins = Bulletin.where.not(aasm_state: :draft)
+    @query = Bulletin.where.not(aasm_state: :draft).ransack(params[:q])
+    @bulletins = @query.result(distinct: true).page params[:page]
   end
 
   def show
@@ -9,17 +10,17 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
 
   def approve
     resource.publish!
-    redirect_to admin_root_path
+    redirect_to admin_root_path, notice: t('notice.categories.published')
   end
 
   def reject
     resource.reject!
-    redirect_to admin_root_path
+    redirect_to admin_root_path, notice: t('notice.categories.rejected')
   end
 
   def archive
     resource.archive!
-    redirect_to admin_root_path
+    redirect_to admin_root_path, notice: t('notice.categories.archived')
   end
 
   private

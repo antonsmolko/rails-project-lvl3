@@ -1,20 +1,22 @@
 class Web::BulletinsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
+  before_action :signed_in_creator?, only: %i[update to_moderate archive]
 
   def index
-    @bulletins = Bulletin.all
+    @query = Bulletin.published.ransack(params[:q])
+    @bulletins = @query.result(distinct: true).page params[:page]
   end
 
   def new
-    @bulletin = Bulletin.create
+    @bulletin = Bulletin.new
     @categories = Category.all
   end
 
   def create
-    @bulletin = Bulletin.create(bulletin_params.merge(creator_id: current_user.id))
+    @bulletin = Bulletin.new(bulletin_params.merge(user_id: current_user.id))
 
     if @bulletin.save!
-      redirect_to profile_root_path, notice: 'Bulletin was successfully created.'
+      redirect_to profile_root_path, notice: t('notice.bulletins.created')
     else
       render :new
     end
@@ -24,9 +26,14 @@ class Web::BulletinsController < ApplicationController
     @bulletin = resource
   end
 
+  def edit
+    @bulletin = resource
+  end
+
   def update
     if resource.update!(bulletin_params)
-      redirect_to profile_root_path, notice: 'Bulletin was successfully updated.'
+      resource.to_draft!
+      redirect_to profile_root_path, notice: t('notice.bulletins.updated')
     else
       render :new
     end
@@ -34,7 +41,7 @@ class Web::BulletinsController < ApplicationController
 
   def to_moderate
     resource.to_moderate!
-    redirect_to profile_root_path
+    redirect_to profile_root_path, notice: t('notice.bulletins.to_moderation')
   end
 
   def archive
@@ -50,5 +57,10 @@ class Web::BulletinsController < ApplicationController
 
   def resource
     Bulletin.find(params[:id])
+  end
+
+  def signed_in_creator?
+    return if resource.user_id == current_user.id
+    redirect_to root_path, notice: t('forbidden')
   end
 end

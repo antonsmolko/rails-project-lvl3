@@ -1,34 +1,35 @@
-.row
-  .col-md-3.col-lg-2
-    ul.nav.flex-column.nav-pills.text-center.text-md-start.me-3
-      li.nav-item
-        = link_to t('web.admin.bulletins.title'), admin_bulletins_path, class: 'nav-link'
-      li.nav-item
-        = link_to t('web.admin.categories.title'), admin_categories_path, class: 'nav-link'
-      li.nav-item
-        = link_to t('web.admin.users.title'), admin_users_path, class: 'nav-link active'
-  .col-md-9.col-lg-10
-    h1= t('web.admin.users.title')
-    table.table
-      thead
+= render layout: '/web/admin/shared/dashboard', locals: { active: 'users', title: t('web.admin.users.title') } do
+  table.table
+    thead
+      tr
+        th(scope="col") = t('common.table.id')
+        th(scope="col") = t('.table.email')
+        th(scope="col") = t('.table.first_name')
+        th(scope="col") = t('.table.last_name')
+        th(scope="col") = t('.table.role')
+        th.text-end(scope="col")= t('common.table.actions')
+    tbody
+      - @users.each do |user|
         tr
-          th(scope="col")= t('common.table.id')
-          th(scope="col")= t('.table.email')
-          th(scope="col")= t('.table.first_name')
-          th(scope="col")= t('.table.last_name')
-          th(scope="col")= t('.table.role')
-          th.text-end(scope="col")= t('common.table.actions')
-      tbody
-        - @users.each do |user|
-          tr
-            th(scope="row")= user.id
-            td= user.email
-            td= user.first_name
-            td= user.last_name
-            td
-              - if user.admin?
-                span.badge.rounded-pill.bg-danger= t('.table.admin')
-            td
-              .d-flex.gap-1.justify-content-end
+          th(scope="row") = user.id
+          td = user.email
+          td = user.first_name
+          td = user.last_name
+          td
+            - if user.super_admin?
+              span.badge.rounded-pill.bg-danger = t('.table.super_admin')
+            - elsif user.admin?
+              span.badge.rounded-pill.bg-primary = t('.table.admin')
+            - else
+              = t("roles.#{user.role}")
+          td
+            .d-flex.gap-1.justify-content-end
+              - if current_user.super_admin? || !user.super_admin?
                 = link_to t('actions.edit'), edit_admin_user_path(user), class: 'btn btn-sm btn-primary'
-                = link_to t('actions.delete'), admin_user_path(user), method: :delete, class: 'btn btn-sm btn-danger'
+              - unless user.super_admin?
+                = link_to t('actions.delete'),
+                        admin_user_path(user),
+                        method: :delete,
+                        data: { confirm: 'Are your sure?' },
+                        class: 'btn btn-sm btn-danger'
+  = paginate @users, left: 1, right: 3, theme: 'bootstrap'

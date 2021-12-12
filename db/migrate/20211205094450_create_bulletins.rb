@@ -1,6 +1,6 @@
 class CreateBulletins < ActiveRecord::Migration[6.1]
   def change
-    create_table :bulletins do |t|
+    create_table :bulletins, force: :cascade do |t|
       t.string :name
       t.text :description
       t.string :aasm_state

@@ -1,32 +1,26 @@
-.row
-  .col-md-3.col-lg-2
-    ul.nav.flex-column.nav-pills.text-center.text-md-start.me-3
-      li.nav-item
-        = link_to t('web.admin.categories.bulletins'), admin_bulletins_path, class: 'nav-link active'
-      li.nav-item
-        = link_to t('web.admin.categories.title'), admin_categories_path, class: 'nav-link'
-      li.nav-item
-        = link_to t('web.admin.users.title'), admin_users_path, class: 'nav-link'
-  .col-md-9.col-lg-10
-    h1= t('web.admin.categories.bulletins')
-    table.table
-      thead
+= render layout: '/web/admin/shared/dashboard', locals: { active: 'bulletins', title: t('web.admin.bulletins.title') } do
+  = render '/web/shared/search_form', url: admin_bulletins_path
+
+  table.table
+    thead
+      tr
+        th(scope="col")= t('common.table.id')
+        th(scope="col")= t('common.table.name')
+        th(scope="col")= t('common.table.category')
+        th(scope="col")= t('common.table.state')
+        th.text-end(scope="col")= t('common.table.actions')
+    tbody
+      - @bulletins.each do |bulletin|
         tr
-          th(scope="col")= t('common.table.id')
-          th(scope="col")= t('common.table.name')
-          th(scope="col")= t('common.table.state')
-          th.text-end(scope="col")= t('common.table.actions')
-      tbody
-        - @bulletins.each do |bulletin|
-          tr
-            th(scope="row")= bulletin.id
-            td= bulletin.name
-            td= bulletin.aasm_state
-            td
-              .d-flex.gap-1.justify-content-end
-                - if bulletin.under_moderation?
-                  = link_to t('actions.approve'), approve_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-primary'
-                - if bulletin.under_moderation?
-                  = link_to t('actions.reject'), reject_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-danger'
-                - unless bulletin.archived?
-                  = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-secondary'
+          th(scope="row")= bulletin.id
+          td= bulletin.name
+          td= bulletin.category.name
+          td= bulletin.aasm_state
+          td: .d-flex.gap-1.justify-content-end
+            - if bulletin.under_moderation?
+              = link_to t('actions.approve'), approve_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-primary'
+            - if bulletin.under_moderation?
+              = link_to t('actions.reject'), reject_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-danger'
+            - unless bulletin.archived?
+              = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-secondary'
+  = paginate @bulletins, left: 1, right: 3, theme: 'bootstrap'

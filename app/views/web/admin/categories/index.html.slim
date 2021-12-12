@@ -1,26 +1,26 @@
-.row
-  .col-md-3.col-lg-2
-    ul.nav.flex-column.nav-pills.text-center.text-md-start.me-3
-      li.nav-item
-        = link_to t('web.admin.bulletins.title'), admin_bulletins_path, class: 'nav-link'
-      li.nav-item
-        = link_to t('web.admin.categories.title'), admin_categories_path, class: 'nav-link active'
-      li.nav-item
-        = link_to t('web.admin.users.title'), admin_users_path, class: 'nav-link'
-  .col-md-9.col-lg-10
-    h1= t('web.admin.categories.title')
-    table.table
-      thead
+= render layout: '/web/admin/shared/dashboard', locals: { active: 'categories', title: t('web.admin.categories.title') } do
+  div
+    = link_to t('web.admin.categories.add'), new_admin_category_path, class: 'btn btn-primary'
+
+  table.table
+    thead
+      tr
+        th(scope="col")= t('common.table.id')
+        th(scope="col")= t('common.table.name')
+        th(scope="col")= t('common.table.bulletins')
+        th.text-end(scope="col")= t('common.table.actions')
+    tbody
+      - @categories.each do |category|
         tr
-          th(scope="col")= t('common.table.id')
-          th(scope="col")= t('common.table.name')
-          th.text-end(scope="col")= t('common.table.actions')
-      tbody
-        - @categories.each do |category|
-          tr
-            th(scope="row")= category.id
-            td= category.name
-            td
-              .d-flex.gap-1.justify-content-end
-                = link_to t('actions.edit'), edit_admin_category_path(category), class: 'btn btn-sm btn-primary'
-                = link_to t('actions.delete'), admin_category_path(category), method: :delete, class: 'btn btn-sm btn-danger'
+          th(scope="row")= category.id
+          td= category.name
+          td= category.bulletins.count
+          td
+            .d-flex.gap-1.justify-content-end
+              = link_to t('actions.edit'), edit_admin_category_path(category), class: 'btn btn-sm btn-primary'
+              = link_to t('actions.delete'),
+                      admin_category_path(category),
+                      method: :delete,
+                      data: { confirm: 'Are your sure?' },
+              class: 'btn btn-sm btn-danger'
+  = paginate @categories, left: 1, right: 3, theme: 'bootstrap'

@@ -1,11 +1,15 @@
-h1= t('.title')
-= link_to t('.add'), new_bulletin_path
+= render '/web/shared/page_title', title: t('.title')
+
+div
+  = link_to t('.add'), new_bulletin_path, class: 'btn btn-primary'
+
 .table-responsive
   table.table.align-middle
     thead
       tr
         th(scope="col")= t('common.table.id')
         th(scope="col")= t('common.table.name')
+        th(scope="col")= t('common.table.category')
         th(scope="col")= t('common.table.state')
         th.text-end(scope="col")= t('common.table.actions')
     tbody
@@ -13,10 +17,13 @@ h1= t('.title')
         tr
           th(scope="row")= bulletin.id
           td= bulletin.name
+          td= bulletin.category.name
           td= bulletin.aasm_state
           td
             .d-flex.gap-1.justify-content-end
+              = link_to t('actions.edit'), edit_bulletin_path(bulletin), class: 'btn btn-sm btn-success'
               - if bulletin.draft?
                 = link_to t('actions.to_moderate'), to_moderate_bulletin_path(bulletin), class: 'btn btn-sm btn-primary'
               - unless bulletin.archived?
                 = link_to t('actions.archive'), archive_bulletin_path(bulletin), class: 'btn btn-sm btn-danger'
+= paginate @bulletins, left: 1, right: 3, theme: 'bootstrap'

@@ -1,5 +1,4 @@
-h1= @bulletin.name
-hr.mb-5
+= render '/web/shared/page_title', title: @bulletin.name
 
 .row
   .col-md-6
@@ -7,4 +6,4 @@ hr.mb-5
     p= @bulletin.description
   .col-md-6
     .card.card-body
-      = @bulletin.creator.full_name
+      = @bulletin.user.full_name

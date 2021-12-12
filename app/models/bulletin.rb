@@ -12,6 +12,8 @@ class Bulletin < ApplicationRecord
 
   default_scope { order('created_at DESC') }
 
+  paginates_per 20
+
   aasm whiny_transitions: false do
     state :draft, initial: true
     state :under_moderation, :published, :rejected, :archived
@@ -30,6 +32,10 @@ class Bulletin < ApplicationRecord
 
     event :archive do
       transitions from: %w[draft under_moderation published], to: :archived
+    end
+
+    event :to_draft do
+      transitions from: %w[draft under_moderation published], to: :draft
     end
   end
 end
