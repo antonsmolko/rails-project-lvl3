@@ -4,16 +4,13 @@ one:
   name: Test One Bulletin Name
   description: Test One Bulletin Description
   category_id: :one
-  image: <%= File.open Rails.root.join('test/fixtures/files', 'image-1.jpeg').to_s %>
 
 two:
   name: Test Two Bulletin Name
   description: Test Two Bulletin Description
   category_id: :two
-  image: <%= File.open Rails.root.join('test/fixtures/files', 'image-2.jpeg').to_s %>
 
 three:
   name: Test Three Bulletin Name
   description: Test Three Bulletin Description
   category_id: :three
-  image: <%= File.open Rails.root.join('test/fixtures/files', 'image-2.jpeg').to_s %>
