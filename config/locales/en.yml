@@ -72,6 +72,8 @@ en:
           title: My bulletins
           add: Add bulletin
     bulletins:
+      index:
+        title: Bulletins
       new:
         title: Add bulletin
       edit:

@@ -1,22 +1,18 @@
-h2
-  | Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-  br
-  - if @minimum_password_length
-    em
-      | (
-      = @minimum_password_length
-      |  characters minimum)
-    br
-  = f.password_field :password, autofocus: true, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-  br
-  = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Change my password"
-= render "devise/shared/links"
+.d-flex.flex-column
+  h2= t('.title')
+  hr.mb-4
+  .row.justify-content-center
+    .col-8
+      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        = f.hidden_field :reset_password_token
+        .row.form-inputs.g-4.justify-content-center
+          .col-md-7
+            = f.password_field :password, autofocus: true, autocomplete: t('devise.passwords.edit.password_placeholder')
+          .col-md-7
+            = f.password_field :password_confirmation, autocomplete: t('devise.passwords.edit.password_placeholder')
+          .col-md-7
+            .d-grid
+              = f.button :submit, t('devise.passwords.edit.submit'), class: 'btn-warning'
+    .col-8
+      = render 'devise/shared/links'
