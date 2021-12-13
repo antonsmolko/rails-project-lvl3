@@ -16,7 +16,7 @@ if Category.count.zero?
 end
 
 if User.count.zero?
-  super_admin = User.create(
+  super_admin = User.new(
     email: 'superadmin@example.com',
     first_name: 'John',
     last_name: 'Doe',
@@ -26,7 +26,7 @@ if User.count.zero?
   super_admin.confirmed_at = Time.zone.now
   super_admin.save!
 
-  user = User.create(
+  user = User.new(
     email: 'sarah@conor.com',
     first_name: 'Sarah',
     last_name: 'Conor',
