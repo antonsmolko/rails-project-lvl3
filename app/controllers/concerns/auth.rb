@@ -2,7 +2,7 @@
 
 module Auth
   def admin_signed_in?
-    current_user.admin? if current_user
+    current_user&.admin?
   end
 
   def authenticate_admin!
