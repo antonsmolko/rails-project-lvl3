@@ -20,13 +20,6 @@ class User < ApplicationRecord
 
   paginates_per 20
 
-  SUPER_ADMIN_ROLE = 'super_admin'
-  DEFAULT_ROLE = 'user'
-  ADMIN_ROLE = 'admin'
-
-  ROLES = [DEFAULT_ROLE, ADMIN_ROLE].freeze
-  ADMIN_ROLES = [SUPER_ADMIN_ROLE, ADMIN_ROLE].freeze
-
   def self.from_omniauth(auth)
     exist_user = User.find_by(email: auth.info.email)
 
@@ -47,16 +40,8 @@ class User < ApplicationRecord
     end
   end
 
-  def super_admin?
-    role == SUPER_ADMIN_ROLE
-  end
-
   def admin?
-    ADMIN_ROLES.include? role
-  end
-
-  def user?
-    role == DEFAULT_ROLE
+    admin
   end
 
   def can_send_email?

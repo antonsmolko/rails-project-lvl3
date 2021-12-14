@@ -1,10 +1,6 @@
 = simple_form_for user, url: url do |f|
   = f.input :first_name, wrapper_html: { class: 'mb-3' }
   = f.input :last_name, wrapper_html: { class: 'mb-3' }
-  - unless user.super_admin?
-    = f.input :role, collection: User::ROLES, selected: user[:role] || User::DEFAULT_ROLE, wrapper_html: { class: 'mb-3' }
-  - else
-    span.badge.rounded-pill.bg-danger = t('.table.super_admin')
   .mt-5
     = link_to t('actions.cancel'), admin_users_path, class: 'btn btn-secondary me-1'
     = f.submit t('actions.save'), class: 'btn btn-primary'

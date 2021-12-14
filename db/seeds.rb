@@ -16,15 +16,15 @@ if Category.count.zero?
 end
 
 if User.count.zero?
-  super_admin = User.create(
-    email: 'superadmin@example.com',
+  admin = User.create(
+    email: 'admin@example.com',
     first_name: 'John',
     last_name: 'Doe',
     password: 'nnnnnn',
-    role: User::SUPER_ADMIN_ROLE
+    admin: true
   )
-  super_admin.confirmed_at = Time.zone.now
-  super_admin.save!
+  admin.confirmed_at = Time.zone.now
+  admin.save!
 
   user = User.create(
     email: 'sarah@conor.com',

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       end
 
       resources :categories
-      resources :users, except: %i[create]
+      resources :users, except: %i[create show new]
     end
 
     namespace 'profile', as: 'profile' do

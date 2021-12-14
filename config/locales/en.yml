@@ -62,7 +62,6 @@ en:
   roles:
     user: User
     admin: Admin
-    super_admin: Super Admin
   web:
     home:
       index:
