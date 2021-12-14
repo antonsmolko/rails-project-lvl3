@@ -2,7 +2,7 @@
 
 class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def index
-    @query = Bulletin.where.not(aasm_state: :draft).ransack(params[:q])
+    @query = Bulletin.where.not(state: :draft).ransack(params[:q])
     @bulletins = @query.result(distinct: true).page params[:page]
   end
 

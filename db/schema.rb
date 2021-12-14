@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 2021_12_05_103246) do
   end
 
   create_table "bulletins", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.text "description"
-    t.string "aasm_state"
+    t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"

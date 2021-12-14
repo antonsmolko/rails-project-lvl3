@@ -16,9 +16,9 @@ div
       - @bulletins.each do |bulletin|
         tr
           th(scope="row")= bulletin.id
-          td= bulletin.name
+          td= bulletin.title
           td= bulletin.category.name
-          td= bulletin.aasm_state
+          td= bulletin.state
           td
             .d-flex.gap-1.justify-content-end
               = link_to t('actions.edit'), edit_bulletin_path(bulletin), class: 'btn btn-sm btn-success'

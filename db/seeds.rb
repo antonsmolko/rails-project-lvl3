@@ -41,7 +41,7 @@ user = User.first
 if Bulletin.count.zero?
   10.times do |i|
     bulletin = Bulletin.new(
-      name: Faker::Movies::VForVendetta.character,
+      title: Faker::Movies::VForVendetta.character,
       description: Faker::Lorem.paragraph(sentence_count: 5),
       category_id: Category.all.sample.id,
       user_id: user.id

@@ -9,5 +9,5 @@
         = image_tag bulletin.image, class: 'img-cover'
       .card-body
         h4.card-title
-          = link_to bulletin.name, bulletin_path(bulletin)
+          = link_to bulletin.title, bulletin_path(bulletin)
         = distance_of_time_in_words(bulletin.created_at, Time.now)

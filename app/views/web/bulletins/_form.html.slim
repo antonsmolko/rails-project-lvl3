@@ -1,5 +1,5 @@
 = simple_form_for bulletin do |f|
-  = f.input :name, wrapper_html: { class: 'mb-3' }
+  = f.input :title, wrapper_html: { class: 'mb-3' }
   = f.input :description, as: :text, wrapper_html: { class: 'mb-3' }
   = f.association :category, wrapper_html: { class: 'mb-3' }
   - if bulletin.image.present?

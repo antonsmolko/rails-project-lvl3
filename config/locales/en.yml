@@ -55,6 +55,7 @@ en:
       id: ID
       actions: Actions
       name: Name
+      title: Title
       state: State
       published_at: Published At
       bulletins: Bulletins

@@ -1,9 +1,9 @@
 class CreateBulletins < ActiveRecord::Migration[6.1]
   def change
     create_table :bulletins, force: :cascade do |t|
-      t.string :name
+      t.string :title
       t.text :description
-      t.string :aasm_state
+      t.string :state
 
       t.timestamps
 

@@ -5,7 +5,7 @@
     thead
       tr
         th(scope="col")= t('common.table.id')
-        th(scope="col")= t('common.table.name')
+        th(scope="col")= t('common.table.title')
         th(scope="col")= t('common.table.category')
         th(scope="col")= t('common.table.state')
         th.text-end(scope="col")= t('common.table.actions')
@@ -13,9 +13,9 @@
       - @bulletins.each do |bulletin|
         tr
           th(scope="row")= bulletin.id
-          td= bulletin.name
+          td= bulletin.title
           td= bulletin.category.name
-          td= bulletin.aasm_state
+          td= bulletin.state
           td: .d-flex.gap-1.justify-content-end
             - if bulletin.under_moderation?
               = link_to t('actions.approve'), approve_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-primary'

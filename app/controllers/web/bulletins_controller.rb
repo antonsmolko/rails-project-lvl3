@@ -54,7 +54,7 @@ class Web::BulletinsController < ApplicationController
   private
 
   def bulletin_params
-    params.require(:bulletin).permit(:name, :description, :category_id, :image)
+    params.require(:bulletin).permit(:title, :description, :category_id, :image)
   end
 
   def resource

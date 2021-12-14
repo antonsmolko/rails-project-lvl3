@@ -1,16 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Test One Bulletin Name
+  title: Test One Bulletin Title
   description: Test One Bulletin Description
   category_id: :one
 
 two:
-  name: Test Two Bulletin Name
+  title: Test Two Bulletin Title
   description: Test Two Bulletin Description
   category_id: :two
 
 three:
-  name: Test Three Bulletin Name
+  title: Test Three Bulletin Title
   description: Test Three Bulletin Description
   category_id: :three

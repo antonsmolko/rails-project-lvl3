@@ -7,7 +7,7 @@ class Bulletin < ApplicationRecord
   belongs_to :category, dependent: :destroy
   has_one_attached :image, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 150 }
+  validates :title, presence: true, length: { maximum: 150 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :image, attached: true
   validates :category, presence: true
@@ -16,7 +16,7 @@ class Bulletin < ApplicationRecord
 
   paginates_per 20
 
-  aasm whiny_transitions: false do
+  aasm column: 'state', whiny_transitions: false do
     state :draft, initial: true
     state :under_moderation, :published, :rejected, :archived
 
