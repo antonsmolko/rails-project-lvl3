@@ -5,11 +5,10 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     match '/users/auth/:action/callback',
-          # controller: { omniauth_callbacks: 'web/omniauth_callbacks' },
           constraints: { action: /github/ },
           to: 'web/omniauth_callbacks#github',
           as: :callback_auth,
-          via: [:get, :post]
+          via: %i[get post]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
