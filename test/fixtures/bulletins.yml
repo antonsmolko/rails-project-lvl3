@@ -3,14 +3,17 @@
 one:
   title: Test One Bulletin Title
   description: Test One Bulletin Description
-  category_id: :one
+  category: :one
+  user: one
 
 two:
   title: Test Two Bulletin Title
   description: Test Two Bulletin Description
-  category_id: :two
+  category: :two
+  user: one
 
 three:
   title: Test Three Bulletin Title
   description: Test Three Bulletin Description
-  category_id: :three
+  category: :three
+  user: two

@@ -5,10 +5,6 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     @categories = Category.all.page params[:page]
   end
 
-  def show
-    @category = resource
-  end
-
   def new
     @category = Category.new
   end

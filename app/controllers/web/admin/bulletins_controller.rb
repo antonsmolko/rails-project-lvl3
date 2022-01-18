@@ -6,12 +6,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
     @bulletins = @query.result(distinct: true).page params[:page]
   end
 
-  def show
-    @bulletin = resource
-  end
-
   def approve
-    resource.publish!
     redirect_to admin_root_path, notice: t('notice.categories.published')
   end
 
