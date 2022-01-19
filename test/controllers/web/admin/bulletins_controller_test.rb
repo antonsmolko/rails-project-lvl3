@@ -14,11 +14,21 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test '#approve' do
-    @bulletin.to_moderate!
-
-    get approve_admin_bulletin_path @bulletin
-
-    # assert @bulletin.published?
-  end
+  # test '#approve' do
+  #   get approve_admin_bulletin_path @bulletin
+  #
+  #   assert @bulletin.published?
+  # end
+  #
+  # test '#reject' do
+  #   get reject_admin_bulletin_path @bulletin
+  #
+  #   assert @bulletin.rejected?
+  # end
+  #
+  # test '#archive' do
+  #   get archive_admin_bulletin_path @bulletin
+  #
+  #   assert @bulletin.archived?
+  # end
 end

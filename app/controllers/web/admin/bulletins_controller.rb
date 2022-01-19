@@ -7,6 +7,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   end
 
   def approve
+    resource.publish!
     redirect_to admin_root_path, notice: t('notice.categories.published')
   end
 
