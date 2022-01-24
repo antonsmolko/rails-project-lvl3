@@ -18,9 +18,9 @@
           td= bulletin.state
           td: .d-flex.gap-1.justify-content-end
             - if bulletin.under_moderation?
-              = link_to t('actions.approve'), approve_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-primary'
+              = link_to t('actions.approve'), approve_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-primary'
             - if bulletin.under_moderation?
-              = link_to t('actions.reject'), reject_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-danger'
+              = link_to t('actions.reject'), reject_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-danger'
             - unless bulletin.archived?
-              = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin), class: 'btn btn-sm btn-secondary'
+              = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-secondary'
   = paginate @bulletins, left: 1, right: 3, theme: 'bootstrap'

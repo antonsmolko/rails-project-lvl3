@@ -36,7 +36,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     @category.bulletins.clear
     @category.destroy!
 
-    redirect_to admin_categories_path, notice: t('notice.categories.deletec')
+    redirect_to admin_categories_path, notice: t('notice.categories.deleted')
   end
 
   private

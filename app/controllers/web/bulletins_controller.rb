@@ -48,7 +48,7 @@ class Web::BulletinsController < ApplicationController
 
   def archive
     resource.archive!
-    redirect_to profile_root_path
+    redirect_to profile_root_path, notice: t('notice.bulletins.archived')
   end
 
   private
