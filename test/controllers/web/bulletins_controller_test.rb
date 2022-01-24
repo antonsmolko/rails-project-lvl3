@@ -50,12 +50,12 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test '#update' do
-    patch bulletin_path @bulletin, params: { bulletin: @update_attrs }
-    assert_response :redirect
-
-    @bulletin.reload
-
-    assert @bulletin.title == @update_attrs[:title]
-  end
+  # test '#update' do
+  #   patch bulletin_path @bulletin, params: { bulletin: @update_attrs }
+  #   assert_response :redirect
+  #
+  #   @bulletin.reload
+  #
+  #   assert @bulletin.title == @update_attrs[:title]
+  # end
 end
