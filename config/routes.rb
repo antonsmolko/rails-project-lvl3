@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
       resources :bulletins, only: %i[index] do
         member do
-          patch :approve
+          patch :publish
           patch :reject
           patch :archive
         end
