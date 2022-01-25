@@ -18,7 +18,7 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.new(bulletin_params.merge(user_id: current_user.id))
 
     if @bulletin.save!
-      redirect_to profile_root_path, notice: t('notice.bulletins.created')
+      redirect_to profile_path, notice: t('notice.bulletins.created')
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Web::BulletinsController < Web::ApplicationController
   def update
     if resource.update!(bulletin_params)
       resource.to_draft!
-      redirect_to profile_root_path, notice: t('notice.bulletins.updated')
+      redirect_to profile_path, notice: t('notice.bulletins.updated')
     else
       render :new
     end
@@ -43,12 +43,12 @@ class Web::BulletinsController < Web::ApplicationController
 
   def to_moderate
     resource.to_moderate!
-    redirect_to profile_root_path, notice: t('notice.bulletins.to_moderation')
+    redirect_to profile_path, notice: t('notice.bulletins.to_moderation')
   end
 
   def archive
     resource.archive!
-    redirect_to profile_root_path, notice: t('notice.bulletins.archived')
+    redirect_to profile_path, notice: t('notice.bulletins.archived')
   end
 
   private

@@ -32,8 +32,8 @@ Rails.application.routes.draw do
       resources :users, except: %i[create show new]
     end
 
-    namespace 'profile', as: 'profile' do
-      root 'home#index'
+    scope 'profile' do
+      root 'home#index', as: :profile
     end
   end
 end

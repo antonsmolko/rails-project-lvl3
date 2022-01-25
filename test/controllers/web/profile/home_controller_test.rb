@@ -9,7 +9,7 @@ class Web::Profile::HomeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#index' do
-    get profile_root_path
+    get profile_path
     assert_response :success
   end
 end
