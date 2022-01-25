@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
     resources :bulletins, except: :destroy do
       member do
-        get :to_moderate
-        get :archive
+        patch :to_moderate
+        patch :archive
       end
     end
 
