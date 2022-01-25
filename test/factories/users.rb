@@ -2,7 +2,6 @@
 
 FactoryBot.define do
   factory :user do
-    first_name { 'Cris' }
-    last_name { 'Nolan' }
+    name { 'Cris Nolan' }
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Web::BulletinsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+class Web::BulletinsController < Web::ApplicationController
+  before_action :require_signed_in_user!, except: %i[index show]
   before_action :signed_in_creator?, only: %i[update to_moderate archive]
 
   def index

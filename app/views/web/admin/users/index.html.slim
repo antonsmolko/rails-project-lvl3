@@ -4,8 +4,7 @@
       tr
         th(scope="col") = t('common.table.id')
         th(scope="col") = t('.table.email')
-        th(scope="col") = t('.table.first_name')
-        th(scope="col") = t('.table.last_name')
+        th(scope="col") = t('.table.name')
         th(scope="col") = t('.table.role')
         th.text-end(scope="col")= t('common.table.actions')
     tbody
@@ -13,8 +12,7 @@
         tr
           th(scope="row") = user.id
           td = user.email
-          td = user.first_name
-          td = user.last_name
+          td = user.name
           td
             - if user.admin?
               span.badge.rounded-pill.bg-primary = t('roles.admin')

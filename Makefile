@@ -5,6 +5,9 @@ prepare:
 	npm install --global yarn
 	curl https://cli-assets.heroku.com/install.sh | sh
 
+env:
+	cp -n .env.example .env || true
+
 setup:
 	cp -n .env.example .env || true
 	bin/setup

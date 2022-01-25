@@ -78,6 +78,9 @@ en:
         title: Add bulletin
       edit:
         title: Edit bulletin
+    registration:
+      index:
+        title: Registration
     admin:
       users:
         title: Users
@@ -119,3 +122,5 @@ en:
       rejected: Bulletin was successfully rejected.
       archived: Bulletin was successfully archived.
       to_moderation: Bulletin was successfully submitted for moderation.
+    auth:
+      sign_in: You are successfully logged in

@@ -26,8 +26,7 @@ class Web::Admin::UsersControllerTest < ActionDispatch::IntegrationTest
 
     @user.reload
 
-    assert @user.first_name == attrs[:first_name]
-    assert @user.last_name == attrs[:last_name]
+    assert @user.name == attrs[:name]
   end
 
   test '#destroy' do

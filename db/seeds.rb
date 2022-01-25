@@ -18,21 +18,15 @@ end
 if User.count.zero?
   admin = User.create(
     email: 'admin@example.com',
-    first_name: 'John',
-    last_name: 'Doe',
-    password: 'nnnnnn',
+    name: 'John Doe',
     admin: true
   )
-  admin.confirmed_at = Time.zone.now
   admin.save!
 
   user = User.create(
     email: 'sarah@conor.com',
-    first_name: 'Sarah',
-    last_name: 'Conor',
-    password: 'nnnnnn'
+    name: 'Sarah Conor'
   )
-  user.confirmed_at = Time.zone.now
   user.save!
 end
 

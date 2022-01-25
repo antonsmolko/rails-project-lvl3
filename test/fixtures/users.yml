@@ -5,20 +5,11 @@
 # below each fixture, per the syntax in the comments below
 #
 
-DEFAULTS: &DEFAULTS
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  confirmed_at: <%= Time.current %>
-  confirmation_sent_at: <%= Time.current %>
-
 one:
   email: one@gmail.com
-  first_name: John
-  last_name: Doe
+  name: John Doe
   admin: true
-  <<: *DEFAULTS
 
 two:
   email: two@gmail.com
-  first_name: Sarah
-  last_name: Conor
-  <<: *DEFAULTS
+  name: Sarah Conor

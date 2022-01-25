@@ -35,6 +35,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
@@ -67,9 +68,6 @@ end
 
 gem 'aasm'
 gem 'active_storage_validations'
-gem 'devise'
-gem 'devise-bootstrap-views'
-gem 'devise-i18n'
 gem 'faker'
 gem 'image_processing'
 gem 'kaminari'

@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'web/omniauth_callbacks' }
+  # devise_for :users, controllers: { omniauth_callbacks: 'web/omniauth_callbacks' }
+  post 'auth/:provider', to: 'web/auth#request', as: :auth_request
+  get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :web do
     root 'home#index'
+    get '/registration', to: 'registration#index', as: :new_user_registration
 
     resources :bulletins, except: :destroy do
       member do
