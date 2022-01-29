@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   paginates_per 20
+
+  def full_name
+    name
+  end
 end
