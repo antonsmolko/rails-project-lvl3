@@ -1,22 +1,13 @@
 # frozen_string_literal: true
 
 module AuthManagement
-  # def admin_signed_in?
-  #   current_user&.admin?
-  # end
-  #
-  # def authenticate_admin!
-  #   return if admin_signed_in?
-  #
-  #   redirect_to root_path, notice: t('forbidden')
-  # end
-
   def sign_in(user)
     session[:user_id] = user.id
   end
 
   def sign_out
     reset_session
+    redirect_back fallback_location: root_path
   end
 
   def signed_in?

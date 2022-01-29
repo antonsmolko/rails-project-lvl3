@@ -15,6 +15,10 @@ class Web::AuthController < Web::ApplicationController
     end
   end
 
+  def destroy
+    sign_out
+  end
+
   private
 
   def auth

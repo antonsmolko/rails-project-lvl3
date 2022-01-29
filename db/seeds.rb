@@ -17,8 +17,8 @@ end
 
 if User.count.zero?
   admin = User.create(
-    email: 'admin@example.com',
-    name: 'John Doe',
+    email: 'asmolko@yandex.ru',
+    name: 'Anton Smolko',
     admin: true
   )
   admin.save!
