@@ -10,7 +10,7 @@ class Bulletin < ApplicationRecord
   validates :title, presence: true, length: { maximum: 150 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :image, attached: true
-  validates :category, presence: true
+  validates :category
 
   default_scope { order('created_at DESC') }
 
