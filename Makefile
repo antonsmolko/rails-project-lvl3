@@ -27,7 +27,7 @@ db-reset:
 	bin/rails db:fixtures:load
 
 start:
-	heroku local
+	bin/rails s
 
 lint:
 	bundle exec rubocop

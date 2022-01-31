@@ -4,7 +4,6 @@ one:
   title: Test One Bulletin Title
   description: Test One Bulletin Description
   category: :one
-  state: under_moderation
   user: one
 
 two:

@@ -5,24 +5,10 @@ require 'test_helper'
 class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users :one
-    @bulletin = bulletins :two
+    @bulletin = bulletins :one
     @category = categories :two
 
     sign_in(@user)
-
-    @attrs = {
-      title: 'Test Bulletin Title',
-      description: 'Test Bulletin Description',
-      category_id: @category.id,
-      image: fixture_file_upload('test/fixtures/files/image-2.jpeg')
-    }
-
-    @update_attrs = {
-      title: 'Test Bulletin Title Updated',
-      description: 'Test Bulletin Description Updated',
-      category_id: @category.id,
-      image: fixture_file_upload('test/fixtures/files/image-3.jpeg')
-    }
   end
 
   test '#index' do
@@ -36,11 +22,18 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#create' do
-    post bulletins_path, params: { bulletin: @attrs }
+    attrs = {
+      title: 'Test Bulletin Title',
+      description: 'Test Bulletin Description',
+      category_id: @category.id,
+      image: fixture_file_upload('test/fixtures/files/image-2.jpeg')
+    }
+
+    post bulletins_path, params: { bulletin: attrs }
 
     assert_response :redirect
 
-    bulletin = Bulletin.find_by(title: @attrs[:title])
+    bulletin = Bulletin.find_by(title: attrs[:title])
 
     assert bulletin
   end
@@ -51,11 +44,36 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # test '#update' do
-  #   patch bulletin_path @bulletin, params: { bulletin: @update_attrs }
+  #   attrs = {
+  #     title: 'Test Bulletin Title Updated',
+  #     description: 'Test Bulletin Description Updated',
+  #     category_id: @category.id,
+  #     image: fixture_file_upload('test/fixtures/files/image-3.jpeg')
+  #   }
+  #
+  #   put bulletin_path @bulletin, params: { bulletin: attrs }
   #   assert_response :redirect
   #
   #   @bulletin.reload
   #
   #   assert @bulletin.title == @update_attrs[:title]
+  # end
+
+  # test '#to_moderate' do
+  #   bulletin = bulletins :one
+  #   assert @bulletin.draft?
+  #
+  #   patch to_moderate_bulletin_path bulletin
+  #
+  #   bulletin.reload
+  #
+  #   assert @bulletin.under_moderation?
+  # end
+
+  # test '#archived' do
+  #   bulletin = bulletins :one
+  #   patch archive_bulletin_path bulletin
+  #
+  #   assert @bulletin.archived?
   # end
 end

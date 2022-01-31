@@ -8,17 +8,17 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
 
   def publish
     resource.publish!
-    redirect_to admin_root_path, notice: t('notice.categories.published')
+    redirect_to admin_root_path, notice: t('notice.bulletins.published')
   end
 
   def reject
     resource.reject!
-    redirect_to admin_root_path, notice: t('notice.categories.rejected')
+    redirect_to admin_root_path, notice: t('notice.bulletins.rejected')
   end
 
   def archive
     resource.archive!
-    redirect_to admin_root_path, notice: t('notice.categories.archived')
+    redirect_to admin_root_path, notice: t('notice.bulletins.archived')
   end
 
   private

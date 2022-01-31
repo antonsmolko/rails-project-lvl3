@@ -32,11 +32,11 @@ class Bulletin < ApplicationRecord
     end
 
     event :archive do
-      transitions from: %w[draft under_moderation published], to: :archived
+      transitions from: %i[draft under_moderation published], to: :archived
     end
 
     event :to_draft do
-      transitions from: %w[draft under_moderation published], to: :draft
+      transitions from: %i[draft under_moderation published], to: :draft
     end
   end
 end

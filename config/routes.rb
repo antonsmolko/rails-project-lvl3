@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end
 
     scope 'profile' do
-      root 'home#index', as: :profile
+      root 'profile/home#index', as: :profile
     end
   end
 end

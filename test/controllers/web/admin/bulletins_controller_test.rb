@@ -5,8 +5,12 @@ require 'test_helper'
 class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users :one
-    @bulletin = bulletins :one
     sign_in(@user)
+    @bulletin = bulletins :one
+  end
+
+  teardown do
+    @bulletin = bulletins :one
   end
 
   test '#index' do
@@ -15,19 +19,19 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # test '#approve' do
-  #   get approve_admin_bulletin_path @bulletin
+  #   patch publish_admin_bulletin_path @bulletin
   #
   #   assert @bulletin.published?
   # end
   #
   # test '#reject' do
-  #   get reject_admin_bulletin_path @bulletin
+  #   patch reject_admin_bulletin_path @bulletin
   #
   #   assert @bulletin.rejected?
   # end
   #
   # test '#archive' do
-  #   get archive_admin_bulletin_path @bulletin
+  #   patch archive_admin_bulletin_path @bulletin
   #
   #   assert @bulletin.archived?
   # end
