@@ -60,14 +60,15 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   # end
 
   # test '#to_moderate' do
-  #   bulletin = bulletins :one
-  #   assert @bulletin.draft?
+  #   bulletin = bulletins :draft
+  #   assert bulletin.draft?
   #
   #   patch to_moderate_bulletin_path bulletin
+  #   assert_response :redirect
   #
   #   bulletin.reload
   #
-  #   assert @bulletin.under_moderation?
+  #   assert bulletin.under_moderation?
   # end
 
   # test '#archived' do
