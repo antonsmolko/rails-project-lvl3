@@ -2,10 +2,10 @@
   = search_form_for @query, { url: url, class: 'row g-3' } do |f|
     .col-sm-7.col-md-auto.flex-md-grow-1
       = f.search_field :title_cont, class: 'form-control'
-      small.form-text.text-muted= t('.bulletin_details')
+      small.form-text.text-muted = t('.bulletin_details')
     .col-sm-5.col-md-4
       = f.collection_select :category_id_eq, Category.all, :id, :name, { include_blank: true }, { class: 'form-control' }
-      small.form-text.text-muted= t('.category_details')
+      small.form-text.text-muted = t('.category_details')
     .col-md-auto
       .row.g-1
         .col-auto

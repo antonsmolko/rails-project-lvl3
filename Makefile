@@ -31,6 +31,7 @@ start:
 
 lint:
 	bundle exec rubocop
+	bundle exec slim-lint app/views/
 
 linter-fix:
 	bundle exec rubocop -A

@@ -7,18 +7,18 @@ div
   table.table.align-middle
     thead
       tr
-        th(scope="col")= t('common.table.id')
-        th(scope="col")= t('common.table.name')
-        th(scope="col")= t('common.table.category')
-        th(scope="col")= t('common.table.state')
-        th.text-end(scope="col")= t('common.table.actions')
+        th(scope="col") = t('common.table.id')
+        th(scope="col") = t('common.table.name')
+        th(scope="col") = t('common.table.category')
+        th(scope="col") = t('common.table.state')
+        th.text-end(scope="col") = t('common.table.actions')
     tbody
       - @bulletins.each do |bulletin|
         tr
-          th(scope="row")= bulletin.id
-          td= bulletin.title
-          td= bulletin.category.name
-          td= bulletin.state
+          th(scope="row") = bulletin.id
+          td = bulletin.title
+          td = bulletin.category.name
+          td = bulletin.state
           td
             .d-flex.gap-1.justify-content-end
               = link_to t('actions.edit'), edit_bulletin_path(bulletin), class: 'btn btn-sm btn-success'

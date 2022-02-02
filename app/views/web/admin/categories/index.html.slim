@@ -5,16 +5,16 @@
   table.table
     thead
       tr
-        th(scope="col")= t('common.table.id')
-        th(scope="col")= t('common.table.name')
-        th(scope="col")= t('common.table.bulletins')
-        th.text-end(scope="col")= t('common.table.actions')
+        th(scope="col") = t('common.table.id')
+        th(scope="col") = t('common.table.name')
+        th(scope="col") = t('common.table.bulletins')
+        th.text-end(scope="col") = t('common.table.actions')
     tbody
       - @categories.each do |category|
         tr
-          th(scope="row")= category.id
-          td= category.name
-          td= category.bulletins.count
+          th(scope="row") = category.id
+          td = category.name
+          td = category.bulletins.count
           td
             .d-flex.gap-1.justify-content-end
               = link_to t('actions.edit'), edit_admin_category_path(category), class: 'btn btn-sm btn-primary'
