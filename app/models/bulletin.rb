@@ -9,13 +9,13 @@ class Bulletin < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 150 }
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :image, attached: true
+  validates :image, presence: true, content_type: %i[png jpg jpeg], size: { less_than: 5.megabytes }
 
   default_scope { order('created_at DESC') }
 
   paginates_per 20
 
-  aasm column: 'state', whiny_transitions: false do
+  aasm column: 'state' do
     state :draft, initial: true
     state :under_moderation, :published, :rejected, :archived
 
