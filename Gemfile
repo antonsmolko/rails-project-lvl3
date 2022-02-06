@@ -38,6 +38,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rubocop-rails'
+  gem 'slim_lint'
   gem 'sqlite3', '~> 1.4'
 end
 

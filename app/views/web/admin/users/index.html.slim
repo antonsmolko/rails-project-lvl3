@@ -6,7 +6,7 @@
         th(scope="col") = t('.table.email')
         th(scope="col") = t('.table.name')
         th(scope="col") = t('.table.role')
-        th.text-end(scope="col")= t('common.table.actions')
+        th.text-end(scope="col") = t('common.table.actions')
     tbody
       - @users.each do |user|
         tr

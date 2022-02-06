@@ -4,15 +4,15 @@
       li.nav-item
         = link_to t('web.admin.categories.bulletins'),
                 admin_bulletins_path,
-                class: "nav-link#{' active' if active === 'bulletins'}"
+                class: "nav-link#{' active' if active == 'bulletins'}"
       li.nav-item
         = link_to t('web.admin.categories.title'),
                 admin_categories_path,
-                class: "nav-link#{' active' if active === 'categories'}"
+                class: "nav-link#{' active' if active == 'categories'}"
       li.nav-item
         = link_to t('web.admin.users.title'),
                 admin_users_path,
-                class: "nav-link#{' active' if active === 'users'}"
+                class: "nav-link#{' active' if active == 'users'}"
   .col-md-9.col-lg-10
     = render '/web/shared/page_title', title: title
     = yield

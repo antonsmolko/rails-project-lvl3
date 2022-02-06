@@ -18,9 +18,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def create
-    @bulletin = Bulletin.new(bulletin_params.merge(user_id: current_user.id))
-
-    if @bulletin.save!
+    if current_user.bulletins.create!(bulletin_params)
       redirect_to profile_path, notice: t('notice.bulletins.created')
     else
       render :new

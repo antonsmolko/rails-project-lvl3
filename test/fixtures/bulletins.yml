@@ -17,3 +17,21 @@ three:
   description: Test Three Bulletin Description
   category: :three
   user: two
+
+draft:
+  title: Test Draft Bulletin Title
+  description: Test Draft Bulletin Description
+  category: :one
+  user: one
+
+under_moderation:
+  title: Test Under Moderation Bulletin Title
+  description: Test Under Moderation Bulletin Description
+  category: :one
+  user: one
+
+publish:
+  title: Test Under Moderation Bulletin Title
+  description: Test Under Moderation Bulletin Description
+  category: :one
+  user: one
