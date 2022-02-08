@@ -27,9 +27,7 @@ class Web::BulletinsController < Web::ApplicationController
 
   def show; end
 
-  def edit
-    resource_bulletin
-  end
+  def edit; end
 
   def update
     if resource_bulletin.update(bulletin_params)

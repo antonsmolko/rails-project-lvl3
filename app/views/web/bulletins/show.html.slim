@@ -1,9 +1,9 @@
-= render '/web/shared/page_title', title: @resource_bulletin.title
+= render '/web/shared/page_title', title: resource_bulletin.title
 
 .row
   .col-md-6
-    = image_tag @resource_bulletin.image, class: 'img-thumbnail mb-4'
-    p = @resource_bulletin.description
+    = image_tag resource_bulletin.image, class: 'img-thumbnail mb-4'
+    p = resource_bulletin.description
   .col-md-6
     .card.card-body
-      = @resource_bulletin.user.full_name
+      = resource_bulletin.user.full_name
