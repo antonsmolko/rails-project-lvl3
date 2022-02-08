@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class Web::BulletinsController < Web::ApplicationController
-  # TODO: rework it with Pundit policy
-  before_action :require_signed_in_user!, except: %i[index show]
-  before_action :signed_in_creator?, only: %i[update to_moderate archive]
-
   helper_method :resource_bulletin
 
   def index
@@ -15,9 +11,13 @@ class Web::BulletinsController < Web::ApplicationController
   def new
     @bulletin = Bulletin.new
     @categories = Category.all
+
+    authorize Bulletin
   end
 
   def create
+    authorize Bulletin
+
     if current_user.bulletins.create!(bulletin_params)
       redirect_to profile_path, notice: t('notice.bulletins.created')
     else
@@ -27,9 +27,13 @@ class Web::BulletinsController < Web::ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    authorize resource_bulletin
+  end
 
   def update
+    authorize resource_bulletin
+
     if resource_bulletin.update(bulletin_params)
       redirect_to profile_path, notice: t('notice.bulletins.updated')
     else
@@ -38,11 +42,15 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def to_moderate
+    authorize resource_bulletin
+
     resource_bulletin.to_moderate!
     redirect_to profile_path, notice: t('notice.bulletins.to_moderation')
   end
 
   def archive
+    authorize resource_bulletin
+
     resource_bulletin.archive!
     redirect_to profile_path, notice: t('notice.bulletins.archived')
   end
@@ -54,13 +62,6 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def resource_bulletin
-    @resource_bulletin = Bulletin.find(params[:id])
-  end
-
-  # TODO: move to AuthManagement
-  def signed_in_creator?
-    return if resource_bulletin.user.id == current_user.id
-
-    redirect_to root_path, notice: t('forbidden')
+    @resource_bulletin ||= Bulletin.find(params[:id])
   end
 end
