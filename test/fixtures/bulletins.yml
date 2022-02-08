@@ -23,15 +23,18 @@ draft:
   description: Test Draft Bulletin Description
   category: :one
   user: one
+  state: draft
 
 under_moderation:
   title: Test Under Moderation Bulletin Title
   description: Test Under Moderation Bulletin Description
   category: :one
   user: one
+  state: under_moderation
 
-publish:
+published:
   title: Test Under Moderation Bulletin Title
   description: Test Under Moderation Bulletin Description
   category: :one
   user: one
+  state: published

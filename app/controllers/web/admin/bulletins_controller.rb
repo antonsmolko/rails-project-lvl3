@@ -17,6 +17,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   end
 
   def archive
+    # binding.pry
     resource.archive!
     redirect_to admin_root_path, notice: t('notice.bulletins.archived')
   end

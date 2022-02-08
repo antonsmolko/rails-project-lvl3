@@ -37,16 +37,15 @@ class Web::BulletinsController < Web::ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-
   end
 
   def to_moderate
-    resource_bulletin.to_moderate
+    resource_bulletin.to_moderate!
     redirect_to profile_path, notice: t('notice.bulletins.to_moderation')
   end
 
   def archive
-    resource_bulletin.archive
+    resource_bulletin.archive!
     redirect_to profile_path, notice: t('notice.bulletins.archived')
   end
 
