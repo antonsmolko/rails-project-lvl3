@@ -49,7 +49,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     attrs = {
       title: 'Test Bulletin Title Updated',
       description: 'Test Bulletin Description Updated',
-      category_id: @category.id,
+      category_id: @category.id
       # FIXME: causes ActiveSupport::MessageVerifier::InvalidSignature for some reason
       # image: @uploaded_file
     }
