@@ -21,6 +21,6 @@
               = link_to t('actions.approve'), publish_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-primary'
             - if bulletin.under_moderation?
               = link_to t('actions.reject'), reject_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-danger'
-            - unless bulletin.archived?
+            - unless bulletin.archived? || bulletin.rejected?
               = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-secondary'
   = paginate @bulletins, left: 1, right: 3, theme: 'bootstrap'

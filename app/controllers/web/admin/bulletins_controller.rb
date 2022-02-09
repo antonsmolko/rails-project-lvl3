@@ -2,11 +2,14 @@
 
 class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def index
+    authorize Bulletin
+
     @query = Bulletin.where.not(state: :draft).ransack(params[:q])
     @bulletins = @query.result(distinct: true).page params[:page]
   end
 
   def publish
+    authorize resource
     resource.publish!
     redirect_to admin_root_path, notice: t('notice.bulletins.published')
   end

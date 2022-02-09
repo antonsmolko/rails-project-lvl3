@@ -2,15 +2,18 @@
 
 class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def index
+    authorize Category
     @categories = Category.all.page params[:page]
   end
 
   def new
     @category = Category.new
+    authorize Category
   end
 
   def create
     @category = Category.new(category_params)
+    authorize @category
 
     if @category.save!
       redirect_to admin_categories_path, notice: t('notice.categories.created')
@@ -21,9 +24,11 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
 
   def edit
     @category = resource
+    authorize @category
   end
 
   def update
+    authorize resource
     if resource.update!(category_params)
       redirect_to admin_categories_path, notice: t('notice.categories.updated')
     else
@@ -33,6 +38,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
 
   def destroy
     @category = resource
+    authorize @category
     @category.bulletins.clear
     @category.destroy!
 

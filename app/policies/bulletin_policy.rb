@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class BulletinPolicy < ApplicationPolicy
+  def index?
+    admin?
+  end
+
   def new?
     @user
   end
@@ -21,7 +25,15 @@ class BulletinPolicy < ApplicationPolicy
     author?
   end
 
+  def publish?
+    admin?
+  end
+
+  def reject?
+    admin?
+  end
+
   def archive?
-    author?
+    author? || admin?
   end
 end
