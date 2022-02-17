@@ -29,4 +29,8 @@ module AuthManagement
 
     redirect_to root_path, alert: t('layouts.web.admin.flash.admins_only')
   end
+
+  def user_not_authorized
+    redirect_to root_path, alert: t('notice.auth.not_authorized')
+  end
 end
