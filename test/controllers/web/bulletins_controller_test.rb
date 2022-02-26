@@ -8,7 +8,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @bulletin = bulletins :draft
     @category = categories :two
     @uploaded_file = Rack::Test::UploadedFile.new('test/fixtures/files/image-2.jpeg')
-    # @uploaded_file = fixture_file_upload('test/fixtures/files/image-2.jpeg')
 
     sign_in(@user)
   end
@@ -50,8 +49,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
       title: 'Test Bulletin Title Updated',
       description: 'Test Bulletin Description Updated',
       category_id: @category.id
-      # FIXME: causes ActiveSupport::MessageVerifier::InvalidSignature for some reason
-      # image: @uploaded_file
     }
 
     put bulletin_path @bulletin, params: { bulletin: attrs }
