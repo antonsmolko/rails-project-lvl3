@@ -81,6 +81,8 @@ en:
     registration:
       index:
         title: Registration
+        social_lead: Registration via your github account
+        github_label: Github
     admin:
       users:
         title: Users
