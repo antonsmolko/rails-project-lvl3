@@ -3,38 +3,38 @@
 one:
   title: Test One Bulletin Title
   description: Test One Bulletin Description
-  category: :one
+  category: one
   user: one
 
 two:
   title: Test Two Bulletin Title
   description: Test Two Bulletin Description
-  category: :two
+  category: two
   user: one
 
 three:
   title: Test Three Bulletin Title
   description: Test Three Bulletin Description
-  category: :three
+  category: three
   user: two
 
 draft:
   title: Test Draft Bulletin Title
   description: Test Draft Bulletin Description
-  category: :one
+  category: one
   user: one
   state: draft
 
 under_moderation:
   title: Test Under Moderation Bulletin Title
   description: Test Under Moderation Bulletin Description
-  category: :one
+  category: one
   user: one
   state: under_moderation
 
 published:
   title: Test Under Moderation Bulletin Title
   description: Test Under Moderation Bulletin Description
-  category: :one
+  category: one
   user: one
   state: published
