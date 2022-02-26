@@ -50,6 +50,8 @@ en:
     approve: Approve
     to_moderate: To Moderate
     reset: Reset
+  confirms:
+    are_your_sure: Are your sure?
   common:
     table:
       id: ID

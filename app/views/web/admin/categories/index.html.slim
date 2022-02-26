@@ -21,6 +21,6 @@
               = link_to t('actions.delete'),
                       admin_category_path(category),
                       method: :delete,
-                      data: { confirm: 'Are your sure?' },
+                      data: { confirm: t('confirms.are_your_sure') },
               class: 'btn btn-sm btn-danger'
   = paginate @categories, left: 1, right: 3, theme: 'bootstrap'

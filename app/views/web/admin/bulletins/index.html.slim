@@ -17,10 +17,10 @@
           td = bulletin.category.name
           td = bulletin.state
           td: .d-flex.gap-1.justify-content-end
-            - if bulletin.under_moderation?
+            - if bulletin.may_publish?
               = link_to t('actions.approve'), publish_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-primary'
-            - if bulletin.under_moderation?
+            - if bulletin.may_reject?
               = link_to t('actions.reject'), reject_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-danger'
-            - unless bulletin.archived? || bulletin.rejected?
+            - if bulletin.may_archive?
               = link_to t('actions.archive'), archive_admin_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-secondary'
   = paginate @bulletins, left: 1, right: 3, theme: 'bootstrap'

@@ -22,8 +22,8 @@ div
           td
             .d-flex.gap-1.justify-content-end
               = link_to t('actions.edit'), edit_bulletin_path(bulletin), class: 'btn btn-sm btn-success'
-              - if bulletin.draft?
+              - if bulletin.may_to_moderate?
                 = link_to t('actions.to_moderate'), to_moderate_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-primary'
-              - unless bulletin.archived?
+              - if bulletin.may_archive?
                 = link_to t('actions.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'btn btn-sm btn-danger'
 = paginate @bulletins, left: 1, right: 3, theme: 'bootstrap'
